@@ -1,0 +1,53 @@
+.download-button {
+    min-width: 40px;
+    min-height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3b82f6;
+    color: white;
+    padding: 16px 32px;
+    border-radius: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 100%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.download-button:hover {
+    transform: scale(1.01);
+}
+
+.download-button:active {
+    transform: scale(0.99);
+}
+
+.button-content {
+    display: flex;
+    align-items: center;
+}
+
+.svg-container {
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+}
+
+.download-icon,
+.download-loader,
+.check-svg {
+    font-size: 18px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.button-copy {
+    font-size: 14px;
+    display: inline-block;
+}
