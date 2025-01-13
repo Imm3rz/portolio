@@ -1,0 +1,58 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    // overflow: hidden;
+  }
+  
+  #iframely-embed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+    background: white;
+  }
+  
+  #app {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    height: 90vh;
+    width: 100%;
+  }
+  
+  #about {
+    display: grid;
+    padding: 3vmin;
+  }
+  
+  .title {
+    padding-left: 1em;
+    font-family: "Prata", serif;
+    font-size: 5vw;
+    width: 100%;
+  }
+  
+  .cafe-inner, .mozart-inner {
+    font-size: 3vw;
+  }
+  
+  .aboutImage {
+    grid-row: 1;
+    grid-column: 2;
+    margin-left: -2rem;
+    opacity: 0.9;
+  
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+  }
+  

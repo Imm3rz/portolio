@@ -9,18 +9,23 @@
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script> <!-- Make sure the script is loaded after the DOM is ready -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="style.scss"> -->
   <style>
-    /* Apply the custom cursor to the entire body */
+   
 * {
-    cursor: url('Normal Select.cur'), auto; 
+    cursor: url('Normal.cur'), auto; 
+    font-family: 'Montserrat', sans-serif;
+
 }
-
-
-
-
 
     section {
       background-color: #111827;
+      height: 100vh;
+      margin: 0; 
+    padding: 0; 
     }
 
     .hover-zoom {
@@ -62,13 +67,13 @@
       font-weight: bold;
       text-transform: uppercase;
       background: linear-gradient(90deg, 
-        #A3BFFA, /* Light Blue */
-        #7F5AF0, /* Purple */
-        #36B6F1, /* Sky Blue */
-        #F52FC9, /* Pink */
-        #30F5A1, /* Mint Green */
-        #36A7FE, /* Ocean Blue */
-        #9B6ED0  /* Lavender */
+        #A3BFFA,
+        #7F5AF0,
+        #36B6F1, 
+        #F52FC9, 
+        #30F5A1, 
+        #36A7FE, 
+        #9B6ED0  
       );
       background-size: 400% 100%;
       background-position: 0% 50%;
@@ -77,7 +82,7 @@
       animation: gradientShift 6s ease infinite;
     }
 
-    /* Keyframes for gradient animation */
+
     @keyframes gradientShift {
       0% {
         background-position: 0% 50%;
@@ -89,102 +94,386 @@
         background-position: 0% 50%;
       }
     }
-    
+    /* Mobile Responsive for sections */
+@media screen and (max-width: 768px) {
+    section {
+        padding: 1rem; 
+    }
+
+    .text-center, .text-left {
+        text-align: center !important;
+    }
+
+    .wavy-circle {
+        --s: 200px; 
+    }
+
+    nav a {
+        display: block;
+        margin: 8px 0; 
+    }
+    #projects{
+      height: auto;
+}
+#about{
+      height: auto;
+}
+.buts{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+}
+
+/* Sidebar styles */
+#mobile-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 350px !important;
+      background-color: #1F2937; 
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+      z-index: 50;
+    }
+
+    #mobile-menu.open {
+      transform: translateX(0);
+    }
+    #mobile-menu.hidden {
+  transform: translateX(100%); 
+}
+
+    #mobile-menu a {
+      display: block;
+      padding: 1rem;
+      color: #ffffff;
+      text-decoration: none;
+      text-align: left;
+    }
+
+    #mobile-menu a:hover {
+      background-color: #4F46E5; /* Indigo */
+    }
+
+    #menu-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 1;
+    }
+   /* Scroll Detection Animation */
+/* Ensure elements are hidden by default */
+.hover-trigger .animate__animated {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* On hover, trigger the animation */
+.hover-trigger:hover .animate__animated {
+  opacity: 1 !important;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+/* Fade-in-up keyframes */
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
   </style>
 </head>
 <body class="bg-gray-100 text-gray-900">
 
-<header class="bg-gray-800 shadow">
-  <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-    <a href="#" class="logo" data-text="ImmErz">Immerz</span></a>
-    <nav class=" md:flex space-x-16">
-      <a href="#home" class="text-white font-bold hover:text-indigo-600">Home</a>
-      <a href="#about" class="text-white font-bold hover:text-indigo-600">About</a>
-      <a href="#portfolio" class="text-white font-bold hover:text-indigo-600">Portfolio</a>
-      <a href="#contact" class="text-white font-bold hover:text-indigo-600">Contact</a>
-    </nav>
-    <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-      </svg>
-    </button>
-  </div>
-</header>
+<!-- Header -->
+  <header class="bg-gray-800 shadow">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#" class="logo" data-text="ImmErz">Immerz</span></a>
+      <button id="menu-btn" class="md:hidden text-white focus:outline-none">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="hidden md:flex space-x-6">
+        <a href="#home" class="text-white hover:text-indigo-600">Home</a>
+        <a href="#projects" class="text-white hover:text-indigo-600">Projects</a>
+        <a href="#about" class="text-white hover:text-indigo-600">About</a>
+      </nav>
+    </div>
+  </header>
 
-<section id="home" class="h-screen bg-gray-900 flex items-center justify-evenly">
-  <div class="text-center justify-center mb-40 text-white animate__animated animate__fadeInDown" style="width: 30%;">
+  <div id="mobile-menu" class="fixed top-0 right-0 w-2/3 h-full bg-gray-900 text-white z-50 hidden">
+    <button id="close-btn" class="absolute top-4 right-4 text-white text-2xl">
+      <i class="fas fa-times"></i>
+    </button>
+    <nav class="flex flex-col space-y-6 mt-16 pl-6">
+      <a href="#home" class="text-lg hover:text-indigo-600">Home</a>
+      <a href="#projects" class="text-lg hover:text-indigo-600">Projects</a>
+      <a href="#about" class="text-lg hover:text-indigo-600">About</a>
+    </nav>
+  </div>
+  
+
+<section id="home" class="home h-screen bg-gray-900 flex flex-col md:flex-row items-center justify-center md:justify-evenly">
+  <div class="text-center justify-center mb-10 md:mb-40 text-white animate-on-scroll md:w-1/3 px-4">
     <p class="mt-4 text-lg">Hello, I'm</p>
     <div class="typewriter">
-      <h1 class="text-5xl text-indigo-600 font-bold">John Emer Martin</h1>
+      <h1 class="text-4xl md:text-5xl text-indigo-600 font-bold">John Emer Martin</h1>
     </div>
-    <p class="mt-4 text-m">a Web Developer skilled in creating user-friendly applications. I’m currently seeking an OJT opportunity to further hone my skills and contribute to impactful projects.</p>
-    <!-- <a href="#contact" class="mt-6 inline-block px-6 py-3 bg-indigo-600 text-white font-bold rounded shadow hover:bg-indigo-700">Download CV</a> -->
-    <!-- <button 
-    type="button" 
-    class="px-4 py-3 bg-indigo-600 rounded-md text-white outline-none focus:ring-4 shadow-lg transform active:scale-x-75 transition-transform mx-5 flex"
->
-    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-    </svg>
-
-    <span class="ml-2">Download CV</span>
-</button> -->
-<div class="items-center justify-center flex">
-<button class="download-button bg-indigo-600 max-w-60">
-  <div class="button-content">
-    <div class="svg-container">
-      <!-- Download Icon -->
-      <i class="fa fa-download download-icon"></i>
-      <i class="fa fa-spinner fa-spin download-loader hidden"></i>
-      <!-- Checked Icon -->
-      <i class="fa fa-check check-svg hidden"></i>
+    <p class="mt-4 text-lg md:text-m">
+      a Web Developer skilled in creating user-friendly applications. I’m currently seeking an OJT opportunity to further hone my skills and contribute to impactful projects.
+    </p>
+    <div class="items-center justify-center flex mt-4 button">
+      <button class="download-button bg-indigo-600 px-6 py-3">
+        <div class="button-content">
+          <div class="svg-container">
+            <i class="fa fa-download download-icon"></i>
+            <i class="fa fa-spinner fa-spin download-loader hidden"></i>
+            <i class="fa fa-check check-svg hidden"></i>
+          </div>
+          <div class="button-copy">DOWNLOAD CV</div>
+        </div>
+      </button>
     </div>
-    <div class="button-copy">DOWNLOAD CV</div>
   </div>
-</button>
-</div>
 
-
-
-  </div>
   <div class="animate__animated animate__zoomIn">
-    <div class="wavy-circle justify-center flex p-10 hover-zoom bg-indigo-600">
-      <img src="img/immerz2.png" alt="" class="rounded-full">
+    <div class="wavy-circle justify-center flex p-10 hover-zoom bg-indigo-600 mx-auto">
+      <img src="img/immerz2.png" alt="" class="rounded-full w-48 h-48 md:w-auto md:h-auto">
     </div>
   </div>
 </section>
 
-<script>
-  const menuBtn = document.getElementById('menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
 
-  menuBtn.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
-  });
+<section id="projects" class="text-center p-16">
+  <h1 class="text-5xl text-indigo-600 font-bold animate-on-scroll animate__animated ">PROJECTS</h1>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mt-20">
+    <div>
+      <video src="video/La Vista Estates.mp4" controls class="mx-auto h-98 object-cover animate-on-scroll animate-on-scroll"></video>
+    </div>
+    
+    <div class="text-white text-left space-y-4 ">
+      <h1 class="text-3xl font-bold text-indigo-600 animate-on-scroll animate__animated  ">La Vista Estates: Interactive Map Selection for Ocampo Residences Subdivision</h1>
+      <h1 class="text-2xl font-bold animate-on-scroll animate__animated ">Team Leader, Full-Stack Developer</h1>
+      <p class="text-lg animate-on-scroll animate__animated ">Developed an interactive real estate map for Ocampo Residences, featuring three user interfaces tailored for Clients, Admins, and Agents. The system includes seamless functionality for inquiries, reservations, appointment scheduling, and dynamic map interactivity, providing an efficient and user-friendly experience for all stakeholders. </p>
+      <div class="flex flex-wrap gap-4 justify-left items-center">
+        <img src="img/php.png" alt="PHP Icon" class="w-10 h-10 rounded-full object-cover">
+        <img src="img/html.png" alt="HTML Icon" class="w-10 h-10 rounded-full object-cover">
+        <img src="img/css-3.png" alt="CSS Icon" class="w-10 h-10 rounded-full object-cover">
+        <img src="img/js.png" alt="JavaScript Icon" class="w-10 h-10 rounded-full object-cover">
+        <img src="img/bootstrap.png" alt="Bootstrap Icon" class="w-10 h-10 rounded-full object-cover">
+        <img src="img/tailwind.png" alt="Tailwind Icon" class="w-10 h-10 rounded-full object-cover">
+        <img src="img/mysql.png" alt="MySQL Icon" class="w-10 h-10 rounded-full object-cover">
+      </div>
+      <div class="flex gap-10 buts">
+        <a class="group relative inline-block overflow-hidden border border-indigo-600 px-8 py-3 focus:outline-none focus:ring" href="#">
+          <span class="absolute inset-y-0 left-0 w-[2px] bg-indigo-600 transition-all group-hover:w-full group-active:bg-indigo-500"></span>
+          <span class="relative text-sm font-medium text-indigo-600 transition-colors  group-hover:text-white">
+            View Screenshots
+          </span>
+        </a>
+      </div>
+    </div>
+    
+    
+
+  </div>
+</section>
+
+
+<section id="about" class="text-white text-center p-16">
+  <h1 class="text-5xl text-indigo-600 font-bold animate-on-scroll animate__animated">ABOUT ME</h1>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center px-4">
+    <div class="space-y-4 text-left md:text-center">
+      <h1 class="text-xl md:text-3xl mt-10 animate-on-scroll animate__animated">
+        <span class="text-indigo-600 font-bold ">Hi, I'm John Emer Martin,</span>
+        a passionate web developer. I specialize in creating responsive and user-friendly websites using HTML, CSS, JavaScript and PHP. With a keen eye for design and a commitment to clean code, I strive to bring ideas to life on the web. Let’s create something amazing together
+      </h1>
+      <div class="flex gap-10 flex items-center justify-center">
+        <a class="group relative inline-block overflow-hidden border border-indigo-600 px-8 py-3 focus:outline-none focus:ring" href="#">
+          <span class="absolute inset-y-0 left-0 w-[2px] bg-indigo-600 transition-all group-hover:w-full group-active:bg-indigo-500"></span>
+          <span class="relative text-sm font-medium text-indigo-600 transition-colors     group-hover:text-white">
+            Send Me A Message
+          </span>
+        </a>
+      </div>
+    </div>
+    <div class="animate__animated animate-on-scroll">
+      <img src="img/aboutmee.png" alt="About Me" class="rounded-lg w-full md:w-auto">
+    </div>
+  </div>
+</section>
+
+<footer class="bg-gray-700 text-white py-10 animate__animated animate-on-scroll" >
+  <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 px-6">
+
+    <div>
+      <h2 class="text-lg font-bold mb-4">Quick Links</h2>
+      <ul>
+        <li><a href="#home" class="hover:text-indigo-400 transition-colors">Home</a></li>
+        <li><a href="#projects" class="hover:text-indigo-400 transition-colors">Projects</a></li>
+        <li><a href="#about" class="hover:text-indigo-400 transition-colors">About</a></li>
+        <li><a href="#contact" class="hover:text-indigo-400 transition-colors">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-lg font-bold mb-4">Follow Me</h2>
+      <div class="flex space-x-4">
+        <a href="https://www.facebook.com/jhnmrmartin" target="_blank" class="hover:text-indigo-400 transition-colors">
+          <i class="fab fa-facebook fa-lg"></i>
+        </a>
+        <a href="#" class="hover:text-indigo-400 transition-colors">
+          <i class="fab fa-twitter fa-lg"></i>
+        </a>
+        <a href="#" class="hover:text-indigo-400 transition-colors">
+          <i class="fab fa-linkedin fa-lg"></i>
+        </a>
+        <a href="#" class="hover:text-indigo-400 transition-colors">
+          <i class="fab fa-github fa-lg"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="border-t border-gray-600 mt-10 pt-4">
+    <p class="text-center text-sm">
+      © 2025 John Emer Martin. All Rights Reserved.
+    </p>
+  </div>
+</footer>
+
+
+
+<script>
+
+const menuBtn = document.getElementById('menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const closeBtn = document.getElementById('close-btn');
+
+menuBtn.addEventListener('click', () => {
+  mobileMenu.classList.remove('hidden', 'animate__slideOutRight');
+  mobileMenu.classList.add('animate__animated', 'animate__slideInRight');
+});
+
+closeBtn.addEventListener('click', () => {
+  mobileMenu.classList.remove('animate__slideInRight'); 
+  mobileMenu.classList.add('animate__animated', 'animate__slideOutRight'); 
   
+ 
+  mobileMenu.addEventListener('animationend', () => {
+    if (mobileMenu.classList.contains('animate__slideOutRight')) {
+      mobileMenu.classList.add('hidden');
+    }
+  }, { once: true });
+});
+
 </script>
 <script>
   const colorChangingText = document.querySelector('.color-changing');
 
 let gradientPosition = 0;
 
-// Function to animate the gradient background position
 function animateGradient() {
   gradientPosition += 1;
   if (gradientPosition > 100) {
     gradientPosition = 0;
   }
 
-  // Update the background position of the text to create a continuous animation
   colorChangingText.style.backgroundPosition = `${gradientPosition}% 50%`;
 
-  // Repeat the animation
   requestAnimationFrame(animateGradient);
 }
 
-// Start the animation loop
+
 animateGradient();
 </script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('section');
+      let isScrolling = false;
+      let currentSectionIndex = 0;
+      const scrollDuration = 200; 
+  
+      function scrollToSection(index) {
+          if (index >= 0 && index < sections.length && index !== currentSectionIndex) {
+              currentSectionIndex = index;
+              isScrolling = true;
+              window.scrollTo({
+                  top: sections[index].offsetTop,
+                  behavior: 'smooth'
+              });
+              setTimeout(() => {
+                  isScrolling = false;
+              }, scrollDuration);
+          }
+      }
+      function handleScroll(event) {
+          if (isScrolling) return; 
+  
+          const scrollDirection = event.deltaY || event.detail || event.wheelDelta;
+  
+          const currentScrollTop = window.scrollY;
+          const sectionIndex = [...sections].findIndex(section =>
+              section.offsetTop <= currentScrollTop + 50 &&
+              section.offsetTop + section.clientHeight > currentScrollTop + 50
+          );
+  
+          if (scrollDirection > 0) {
+              if (sectionIndex < sections.length - 1) {
+                  scrollToSection(sectionIndex + 1);
+              }
+          } else {
+              if (sectionIndex > 0) {
+                  scrollToSection(sectionIndex - 1);
+              }
+          }
+      }
+  
+      window.addEventListener('wheel', handleScroll, { passive: true });
+      window.addEventListener('keydown', (event) => {
+          if (event.key === 'ArrowDown') {
+              handleScroll({ deltaY: 1 });
+          } else if (event.key === 'ArrowUp') {
+              handleScroll({ deltaY: -1 });
+          }
+      });
+  });
+  </script>
+
+
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+
+  // Create an intersection observer to detect when the element comes into view
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // When element is in view, add fadeInUp animation
+        entry.target.classList.add('animate__fadeInUp');
+        entry.target.classList.remove('animate-on-scroll');
+        observer.unobserve(entry.target); // Stop observing once the animation has been triggered
+      }
+    });
+  }, { threshold: 0.5 }); // Trigger animation when 50% of the element is in view
+
+  // Observe each element with the animate-on-scroll class
+  elementsToAnimate.forEach(element => {
+    observer.observe(element);
+  });
+});
+
+  </script>
+  
 
 </body>
 </html>
