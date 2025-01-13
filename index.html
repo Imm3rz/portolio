@@ -123,10 +123,15 @@
   align-items: center;
   justify-content: center;
 }
+.vid{
+  height: 200px !important;
+  object-fit: cover;
+  width: 320px !important;
+}
 
 }
 
-/* Sidebar styles */
+
 #mobile-menu {
       position: fixed;
       top: 0;
@@ -155,7 +160,7 @@
     }
 
     #mobile-menu a:hover {
-      background-color: #4F46E5; /* Indigo */
+      background-color: #4F46E5; 
     }
 
     #menu-btn {
@@ -164,14 +169,12 @@
       right: 1rem;
       z-index: 1;
     }
-   /* Scroll Detection Animation */
-/* Ensure elements are hidden by default */
+   
 .hover-trigger .animate__animated {
   opacity: 0;
   transition: opacity 0.5s ease;
 }
 
-/* On hover, trigger the animation */
 .hover-trigger:hover .animate__animated {
   opacity: 1 !important;
   animation: fadeInUp 1s ease-out forwards;
@@ -253,16 +256,16 @@
 
 
 <section id="projects" class="text-center p-16">
-  <h1 class="text-5xl text-indigo-600 font-bold animate-on-scroll animate__animated ">PROJECTS</h1>
+  <h1 class="text-5xl text-indigo-600 font-bold animate-on-scroll animate__animated">PROJECTS</h1>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mt-20">
-    <div>
-      <iframe src="https://drive.google.com/file/d/1TxIAZZitYN0QfitNPV0oKh2RM1jqCDP8/preview" width="640" height="360" allow="autoplay" frameborder="0" class="mx-auto h-98 object-cover animate-on-scroll animate-on-scroll"></iframe>
+    <div class="w-full aspect-w-16 aspect-h-9 flex justify-center items-center">
+      <iframe src="https://drive.google.com/file/d/1TxIAZZitYN0QfitNPV0oKh2RM1jqCDP8/preview" allow="autoplay" style="height: 400px; width: 700px;" frameborder="0" class="animate-on-scroll animate__animated h-98 vid object-cover mx-auto"></iframe>
     </div>
     
-    <div class="text-white text-left space-y-4 ">
-      <h1 class="text-3xl font-bold text-indigo-600 animate-on-scroll animate__animated  ">La Vista Estates: Interactive Map Selection for Ocampo Residences Subdivision</h1>
-      <h1 class="text-2xl font-bold animate-on-scroll animate__animated ">Team Leader, Full-Stack Developer</h1>
-      <p class="text-lg animate-on-scroll animate__animated ">Developed an interactive real estate map for Ocampo Residences, featuring three user interfaces tailored for Clients, Admins, and Agents. The system includes seamless functionality for inquiries, reservations, appointment scheduling, and dynamic map interactivity, providing an efficient and user-friendly experience for all stakeholders. </p>
+    <div class="text-white text-left space-y-4">
+      <h1 class="text-3xl font-bold text-indigo-600 animate-on-scroll animate__animated">La Vista Estates: Interactive Map Selection for Ocampo Residences Subdivision</h1>
+      <h1 class="text-2xl font-bold animate-on-scroll animate__animated">Team Leader, Full-Stack Developer</h1>
+      <p class="text-lg animate-on-scroll animate__animated">Developed an interactive real estate map for Ocampo Residences, featuring three user interfaces tailored for Clients, Admins, and Agents. The system includes seamless functionality for inquiries, reservations, appointment scheduling, and dynamic map interactivity, providing an efficient and user-friendly experience for all stakeholders.</p>
       <div class="flex flex-wrap gap-4 justify-left items-center">
         <img src="img/php.png" alt="PHP Icon" class="w-10 h-10 rounded-full object-cover">
         <img src="img/html.png" alt="HTML Icon" class="w-10 h-10 rounded-full object-cover">
@@ -275,15 +278,12 @@
       <div class="flex gap-10 buts">
         <a class="group relative inline-block overflow-hidden border border-indigo-600 px-8 py-3 focus:outline-none focus:ring" href="#">
           <span class="absolute inset-y-0 left-0 w-[2px] bg-indigo-600 transition-all group-hover:w-full group-active:bg-indigo-500"></span>
-          <span class="relative text-sm font-medium text-indigo-600 transition-colors  group-hover:text-white">
+          <span class="relative text-sm font-medium text-indigo-600 transition-colors group-hover:text-white">
             View Screenshots
           </span>
         </a>
       </div>
     </div>
-    
-    
-
   </div>
 </section>
 
